@@ -1543,7 +1543,7 @@ contains
             call Pv(iv)%vt%axpy(-alpha, Pv(ivj)%vt)
           end do
           alpha = v(iv)%vt%norm()
-          beta  = 1.0_r_def/alpha
+          beta  = 1.0_r_def/(alpha + sign(EPS, alpha))
           call v(iv)%vt%scale(beta)
           call Pv(iv)%vt%scale(beta)
           alpha = res%dot(v(iv)%vt)
